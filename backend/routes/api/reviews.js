@@ -111,6 +111,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
         url: reviewImage.url,
       };
 
+      res.statusCode = 201;
       return res.json(safeReviewImage);
     } else {
       return res.json({ user: null });

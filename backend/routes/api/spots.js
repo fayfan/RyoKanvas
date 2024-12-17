@@ -202,6 +202,7 @@ router.post('/', requireAuth, validateSpot, async (req, res) => {
       price,
     });
 
+    res.statusCode = 201;
     return res.json(spot);
   } else {
     return res.json({ user: null });
@@ -242,6 +243,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
         preview: spotImage.preview,
       };
 
+      res.statusCode = 201;
       return res.json(safeSpotImage);
     } else {
       return res.json({ user: null });
@@ -400,9 +402,10 @@ router.post(
             stars,
           });
 
+          res.statusCode = 201;
           return res.json(newReview);
         } catch (error) {
-          res.statusCode = 403;
+          res.statusCode = 500;
           return res.json({
             message: 'User already has a review for this spot',
           });

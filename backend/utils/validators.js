@@ -157,6 +157,11 @@ const validateBooking = [
 const validateQuery = [
   query('page').custom(async (page, { req }) => {
     if (page) {
+      if (!Number.isInteger(page))
+        throw new Error(
+          `Page must be ≥1 & ≤${maxPages} with ${size} results per page`
+        );
+
       const numSpots = await Spot.count();
       const size = req.query.size ? req.query.size : 20;
       const maxPages = Math.ceil(numSpots / size);
@@ -169,6 +174,9 @@ const validateQuery = [
   }),
   query('size').custom(async size => {
     if (size) {
+      if (!Number.isInteger(size))
+        throw new Error('Size must be between 1 & 20');
+
       if (size < 1 || size > 20) {
         throw new Error('Size must be between 1 & 20');
       }
@@ -176,6 +184,9 @@ const validateQuery = [
   }),
   query('minLat').custom(async minLat => {
     if (minLat) {
+      if (isNaN(minLat)) {
+        throw new Error('Minimum latitude is invalid');
+      }
       if (minLat < -90 || minLat > 90) {
         throw new Error('Minimum latitude is invalid');
       }
@@ -183,6 +194,9 @@ const validateQuery = [
   }),
   query('maxLat').custom(async maxLat => {
     if (maxLat) {
+      if (isNaN(maxLat)) {
+        throw new Error('Maximum latitude is invalid');
+      }
       if (maxLat < -90 || maxLat > 90) {
         throw new Error('Maximum latitude is invalid');
       }
@@ -190,6 +204,9 @@ const validateQuery = [
   }),
   query('minLng').custom(async minLng => {
     if (minLng) {
+      if (isNaN(minLng)) {
+        throw new Error('Minimum longitude is invalid');
+      }
       if (minLng < -180 || minLng > 180) {
         throw new Error('Minimum longitude is invalid');
       }
@@ -197,6 +214,9 @@ const validateQuery = [
   }),
   query('maxLng').custom(async maxLng => {
     if (maxLng) {
+      if (isNaN(maxLng)) {
+        throw new Error('Maximum longitude is invalid');
+      }
       if (maxLng < -180 || maxLng > 180) {
         throw new Error('Maximum longitude is invalid');
       }
