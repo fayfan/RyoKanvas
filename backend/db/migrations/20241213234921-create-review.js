@@ -15,10 +15,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      spotId: {
+      userId: {
         type: Sequelize.INTEGER,
       },
-      userId: {
+      spotId: {
         type: Sequelize.INTEGER,
       },
       review: {

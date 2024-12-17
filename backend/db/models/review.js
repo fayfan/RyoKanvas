@@ -7,7 +7,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Review.belongsTo(models.User, {
-        foreignKey: 'id',
+        foreignKey: 'userId',
+      });
+      Review.belongsTo(models.Spot, {
+        foreignKey: 'spotId',
       });
       Review.hasMany(models.ReviewImage, {
         foreignKey: 'reviewId',
@@ -17,14 +20,30 @@ module.exports = (sequelize, DataTypes) => {
   }
   Review.init(
     {
-      spotId: DataTypes.INTEGER,
       userId: DataTypes.INTEGER,
+      spotId: DataTypes.INTEGER,
       review: DataTypes.TEXT,
       stars: DataTypes.INTEGER,
     },
     {
       sequelize,
       modelName: 'Review',
+      scopes: {
+        byUserId(userId) {
+          return {
+            where: {
+              userId: userId,
+            },
+          };
+        },
+        bySpotId(spotId) {
+          return {
+            where: {
+              spotId: spotId,
+            },
+          };
+        },
+      },
     }
   );
   return Review;

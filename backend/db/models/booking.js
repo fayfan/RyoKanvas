@@ -7,7 +7,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Booking.belongsTo(models.User, {
-        foreignKey: 'id',
+        foreignKey: 'userId',
+      });
+      Booking.belongsTo(models.Spot, {
+        foreignKey: 'spotId',
       });
     }
   }
@@ -15,12 +18,28 @@ module.exports = (sequelize, DataTypes) => {
     {
       spotId: DataTypes.INTEGER,
       userId: DataTypes.INTEGER,
-      startDate: DataTypes.DATE,
-      endDate: DataTypes.DATE,
+      startDate: DataTypes.DATEONLY,
+      endDate: DataTypes.DATEONLY,
     },
     {
       sequelize,
       modelName: 'Booking',
+      scopes: {
+        byUserId(userId) {
+          return {
+            where: {
+              userId: userId,
+            },
+          };
+        },
+        bySpotId(spotId) {
+          return {
+            where: {
+              spotId: spotId,
+            },
+          };
+        },
+      },
     }
   );
   return Booking;

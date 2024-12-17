@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       SpotImage.belongsTo(models.Spot, {
-        foreignKey: 'id',
+        foreignKey: 'spotId',
       });
     }
   }
@@ -24,6 +24,15 @@ module.exports = (sequelize, DataTypes) => {
         attributes: {
           include: ['id', 'url', 'preview'],
           exclude: ['spotId', 'createdAt', 'updatedAt'],
+        },
+      },
+      scopes: {
+        bySpotId(spotId) {
+          return {
+            where: {
+              spotId: spotId,
+            },
+          };
         },
       },
     }
