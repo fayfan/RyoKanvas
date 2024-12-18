@@ -62,6 +62,7 @@ router.get('/', validateQuery, async (req, res) => {
   formattedSpots.forEach(spot => {
     spot.lat = parseFloat(spot.lat);
     spot.lng = parseFloat(spot.lng);
+    spot.price = parseFloat(spot.price);
 
     const reviewsSum = spot.Reviews.reduce((acc, curr) => acc + curr.stars, 0);
     const avgRating = reviewsSum / spot.Reviews.length;
@@ -73,7 +74,7 @@ router.get('/', validateQuery, async (req, res) => {
   });
 
   const response = { Spots: formattedSpots };
-  if (scopes.length) {
+  if (scopes) {
     response.page = page ? page : 1;
     response.size = size ? size : 20;
   }
