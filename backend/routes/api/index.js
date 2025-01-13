@@ -28,9 +28,4 @@ router.use('/spot-images', spotImagesRouter);
 
 router.use('/review-images', reviewImagesRouter);
 
-// Keep this route to test frontend setup
-router.post('/test', (req, res) => {
-  res.json({ requestBody: req.body });
-});
-
 module.exports = router;
