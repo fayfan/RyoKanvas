@@ -47,7 +47,7 @@ const LoginFormPage = () => {
             required
           />
         </label>
-        {errors.credential && <p>{errors.credential}</p>}
+        {errors.credential && <p className="error">{errors.credential}</p>}
         <button type="submit">Log In</button>
       </form>
     </main>

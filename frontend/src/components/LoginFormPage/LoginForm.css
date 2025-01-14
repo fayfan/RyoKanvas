@@ -1,6 +1,14 @@
 button {
   height: 1.5rem;
-  width: 100%;
+  width: 50%;
+  margin-top: 1rem;
+  align-self: center;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin: 0.25rem 0 0 0;
 }
 
 form {
@@ -9,13 +17,17 @@ form {
   flex-direction: column;
 }
 
+h1 {
+  margin-bottom: 0;
+}
+
 label {
   display: block;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 main {
-  height: 98vh;
+  height: 75vh;
   display: flex;
   flex-direction: column;
   align-items: center;

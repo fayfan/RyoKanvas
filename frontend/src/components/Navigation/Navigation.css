@@ -1,0 +1,50 @@
+ul .hidden {
+  display: none;
+}
+
+.logout-button {
+  margin-top: 0.25rem;
+  width: max-content;
+}
+
+.profile-button {
+  font-size: 3rem;
+  height: 3rem;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.session-links {
+  width: 10%;
+  text-align: center;
+}
+
+ul {
+  padding-inline-start: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.user-email,
+.user-firstname-lastname {
+  font-size: 0.75rem;
+}
+
+.user-username {
+  font-size: 1rem;
+  font-weight: bold;
+}
