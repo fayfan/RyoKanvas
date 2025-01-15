@@ -28,7 +28,7 @@ const LoginFormModal = () => {
 
   return (
     <main className="login-form-main">
-      <h1>Log In</h1>
+      <h1 className="login-h1">Log In</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Username or Email:&nbsp;
@@ -49,7 +49,9 @@ const LoginFormModal = () => {
           />
         </label>
         {errors.credential && <p className="error">{errors.credential}</p>}
-        <button type="submit">Log In</button>
+        <button type="submit" className="login-button">
+          Log In
+        </button>
       </form>
     </main>
   );

@@ -2,6 +2,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { FaUserCircle } from 'react-icons/fa';
+import LoginFormModal from '../LoginFormModal';
+import SignupFormModal from '../SignupFormModal';
+import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
 import * as sessionActions from '../../store/session';
 
 const ProfileButton = ({ user }) => {
@@ -11,14 +14,14 @@ const ProfileButton = ({ user }) => {
 
   const toggleMenu = e => {
     e.stopPropagation(); // Keep click from bubbling up to document & triggering closeMenu
-    setShowMenu(!showMenu); // If (!showMenu) setShowMenu(true);
+    setShowMenu(!showMenu);
   };
 
   useEffect(() => {
     if (!showMenu) return;
 
     const closeMenu = e => {
-      if (ulRef.current && !ulRef.current.contains(e.target)) {
+      if (!ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
     };
@@ -28,9 +31,12 @@ const ProfileButton = ({ user }) => {
     return () => document.removeEventListener('click', closeMenu);
   }, [showMenu]);
 
+  const closeMenu = () => setShowMenu(false);
+
   const logout = e => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    closeMenu();
   };
 
   const ulClassName = 'profile-dropdown' + (showMenu ? '' : ' hidden');
@@ -41,16 +47,34 @@ const ProfileButton = ({ user }) => {
         <FaUserCircle />
       </button>
       <ul className={ulClassName} ref={ulRef}>
-        <li className="user-username">{user.username}</li>
-        <li className="user-firstname-lastname">
-          {user.firstName} {user.lastName}
-        </li>
-        <li className="user-email">{user.email}</li>
-        <li>
-          <button onClick={logout} className="logout-button">
-            Log Out
-          </button>
-        </li>
+        {user ? (
+          <>
+            <li className="user-username">{user.username}</li>
+            <li className="user-firstname-lastname">
+              {user.firstName} {user.lastName}
+            </li>
+            <li className="user-email">{user.email}</li>
+            <li>
+              <button onClick={logout} className="logout-button">
+                Log Out
+              </button>
+            </li>
+          </>
+        ) : (
+          <div className="session-links">
+            <OpenModalMenuItem
+              itemText="Log In"
+              onItemClick={closeMenu}
+              modalComponent={<LoginFormModal />}
+            />
+
+            <OpenModalMenuItem
+              itemText="Sign Up"
+              onItemClick={closeMenu}
+              modalComponent={<SignupFormModal />}
+            />
+          </div>
+        )}
       </ul>
     </>
   );

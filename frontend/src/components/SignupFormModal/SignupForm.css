@@ -1,10 +1,3 @@
-button {
-  height: 1.5rem;
-  width: 50%;
-  margin-top: 1rem;
-  align-self: center;
-}
-
 .error {
   color: red;
   text-align: center;
@@ -26,6 +19,19 @@ label {
   margin-top: 1rem;
 }
 
+.signup-button {
+  color: white;
+  background-color: #83aaff;
+  font-weight: bold;
+  height: max-content;
+  width: 50%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  align-self: center;
+}
+
 .signup-form-main {
   height: 30rem;
   width: 75vw;
@@ -35,4 +41,9 @@ label {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.signup-h1 {
+  color: #83aaff;
+  margin: 0;
 }

@@ -7,8 +7,14 @@ ul .hidden {
 }
 
 .logout-button {
+  color: white;
+  background-color: #83aaff;
+  height: max-content;
+  width: 100%;
+  padding: 0.5rem;
   margin-top: 0.25rem;
-  width: max-content;
+  border: none;
+  border-radius: 0.5rem;
 }
 
 .profile-button {
@@ -34,9 +40,20 @@ ul .hidden {
   border-radius: 0.5rem;
 }
 
+.modal-item {
+  color: white;
+  background-color: #83aaff;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+
 .session-links {
-  width: max-content;
+  background-color: white;
+  width: 100%;
   text-align: center;
+  border-radius: 0.5rem;
 }
 
 ul {
@@ -48,7 +65,7 @@ ul {
 }
 
 .user-email {
-  padding-bottom: 0.25rem;
+  padding-bottom: 1rem;
   margin-bottom: 0.25rem;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
@@ -57,17 +74,21 @@ ul {
 .user-email,
 .user-firstname-lastname {
   color: #83aaff;
-  background-color: white;
   font-size: 0.75rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+}
+
+.user-email,
+.user-firstname-lastname,
+.user-username {
+  background-color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .user-username {
-  background-color: white;
   font-size: 1rem;
   font-weight: bold;
-  padding-top: 0.25rem;
+  padding-top: 1rem;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
 }
