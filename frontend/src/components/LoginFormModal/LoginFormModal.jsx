@@ -1,33 +1,34 @@
-// frontend/src/components/LoginFormPage/LoginFormPage.jsx
+// frontend/src/components/LoginFormModal/LoginFormModal.jsx
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useModal } from '../../context/Modal';
 import * as sessionActions from '../../store/session';
 import './LoginForm.css';
 
-const LoginFormPage = () => {
+const LoginFormModal = () => {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
-
-  if (sessionUser) return <Navigate to="/" replace={true} />;
+  const { closeModal } = useModal();
 
   const handleSubmit = e => {
     e.preventDefault();
     setErrors({});
-    return dispatch(sessionActions.login({ credential, password })).catch(
-      async res => {
+    return dispatch(sessionActions.login({ credential, password }))
+      .then(closeModal)
+      .catch(async res => {
         const data = await res.json();
-        if (data?.errors) setErrors(data.errors);
-      }
-    );
+        // Equivalent to `if (data && data.errors) {`
+        if (data?.errors) {
+          setErrors(data.errors);
+        }
+      });
   };
 
   return (
-    <main>
-      <h1>Log In</h1>
+    <main className="login-form-main">
+      <h1 className="login-h1">Log In</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Username or Email:&nbsp;
@@ -47,11 +48,13 @@ const LoginFormPage = () => {
             required
           />
         </label>
-        {errors.credential && <p>{errors.credential}</p>}
-        <button type="submit">Log In</button>
+        {errors.credential && <p className="error">{errors.credential}</p>}
+        <button type="submit" className="login-button">
+          Log In
+        </button>
       </form>
     </main>
   );
 };
 
-export default LoginFormPage;
+export default LoginFormModal;

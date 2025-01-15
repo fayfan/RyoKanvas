@@ -1,0 +1,45 @@
+.error {
+  color: red;
+  text-align: center;
+  margin: 0.25rem 0 0 0;
+}
+
+form {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-button {
+  color: white;
+  background-color: #83aaff;
+  font-weight: bold;
+  height: max-content;
+  width: 50%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  align-self: center;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+}
+
+.login-form-main {
+  height: 20rem;
+  width: 75vw;
+  min-width: 35rem;
+  max-width: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-h1 {
+  color: #83aaff;
+  margin: 0;
+}

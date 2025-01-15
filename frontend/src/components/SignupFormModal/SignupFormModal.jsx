@@ -1,12 +1,12 @@
-// frontend/src/components/SignupFormPage/SignupFormPage.jsx
+// frontend/src/components/SignupFormModal/SignupFormModal.jsx
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useModal } from '../../context/Modal';
 import * as sessionActions from '../../store/session';
+import './SignupForm.css';
 
-const SignupFormPage = () => {
+const SignupFormModal = () => {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -14,8 +14,7 @@ const SignupFormPage = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({});
-
-  if (sessionUser) return <Navigate to="/" replace={true} />;
+  const { closeModal } = useModal();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -30,12 +29,15 @@ const SignupFormPage = () => {
           lastName,
           password,
         })
-      ).catch(async res => {
-        const data = await res.json();
-        if (data?.errors) {
-          setErrors(data.errors);
-        }
-      });
+      )
+        .then(closeModal)
+        .catch(async res => {
+          const data = await res.json();
+          // Equivalent to `if (data && data.errors) {`
+          if (data?.errors) {
+            setErrors(data.errors);
+          }
+        });
     }
 
     return setErrors({
@@ -45,8 +47,8 @@ const SignupFormPage = () => {
   };
 
   return (
-    <main>
-      <h1>Sign Up</h1>
+    <main className="signup-form-main">
+      <h1 className="signup-h1">Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Email:&nbsp;
@@ -108,10 +110,12 @@ const SignupFormPage = () => {
           />
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        <button type="submit">Sign Up</button>
+        <button type="submit" className="signup-button">
+          Sign Up
+        </button>
       </form>
     </main>
   );
 };
 
-export default SignupFormPage;
+export default SignupFormModal;
