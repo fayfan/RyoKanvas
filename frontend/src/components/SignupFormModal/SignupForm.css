@@ -1,0 +1,38 @@
+button {
+  height: 1.5rem;
+  width: 50%;
+  margin-top: 1rem;
+  align-self: center;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin: 0.25rem 0 0 0;
+}
+
+form {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin: 0;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+}
+
+.signup-form-main {
+  height: 30rem;
+  width: 75vw;
+  min-width: 35rem;
+  max-width: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

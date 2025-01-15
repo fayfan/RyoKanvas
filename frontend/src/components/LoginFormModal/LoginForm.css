@@ -18,7 +18,7 @@ form {
 }
 
 h1 {
-  margin-bottom: 0;
+  margin: 0;
 }
 
 label {
@@ -26,8 +26,11 @@ label {
   margin-top: 1rem;
 }
 
-main {
-  height: 75vh;
+.login-form-main {
+  height: 20rem;
+  width: 75vw;
+  min-width: 35rem;
+  max-width: 50rem;
   display: flex;
   flex-direction: column;
   align-items: center;
