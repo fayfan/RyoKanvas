@@ -1,6 +1,8 @@
 // frontend/src/components/Navigation/ProfileButton.jsx
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { MdMenu } from 'react-icons/md';
 import { FaUserCircle } from 'react-icons/fa';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
@@ -9,6 +11,7 @@ import * as sessionActions from '../../store/session';
 
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -37,41 +40,42 @@ const ProfileButton = ({ user }) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
     closeMenu();
+    navigate('/');
   };
 
   const ulClassName = 'profile-dropdown' + (showMenu ? '' : ' hidden');
+  const profileButtonClassName = 'profile-button' + (showMenu ? ' open' : '');
 
   return (
     <>
-      <button onClick={toggleMenu} className="profile-button">
-        <FaUserCircle />
+      <button onClick={toggleMenu} className={`${profileButtonClassName}`}>
+        <MdMenu className="menu-icon" />
+        <FaUserCircle className="profile-icon" />
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
-          <>
-            <li className="user-username">{user.username}</li>
-            <li className="user-firstname-lastname">
-              {user.firstName} {user.lastName}
-            </li>
+          <div className="session-links">
+            <li className="user-greeting">Hello, {user.firstName}</li>
             <li className="user-email">{user.email}</li>
-            <li>
-              <button onClick={logout} className="logout-button">
-                Log Out
-              </button>
-            </li>
-          </>
+            <Link to="/spots/current" className="dropdown-link">
+              <li className="dropdown-item">Manage Spots</li>
+            </Link>
+
+            <button onClick={logout} className="dropdown-item logout-button">
+              <li>Log Out</li>
+            </button>
+          </div>
         ) : (
           <div className="session-links">
-            <OpenModalMenuItem
-              itemText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
-
             <OpenModalMenuItem
               itemText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
+            />
+            <OpenModalMenuItem
+              itemText="Log In"
+              onItemClick={closeMenu}
+              modalComponent={<LoginFormModal />}
             />
           </div>
         )}

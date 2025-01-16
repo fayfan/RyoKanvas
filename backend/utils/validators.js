@@ -4,9 +4,9 @@ const { Spot, User } = require('../db/models');
 
 // Check & validate user keys at signup
 const validateSignup = [
+  check('email').isEmail().withMessage('Please provide a valid email.'),
   check('email')
     .exists({ checkFalsy: true })
-    .isEmail()
     .isLength({ min: 3, max: 256 })
     .withMessage('Please provide a valid email.'),
   check('username')

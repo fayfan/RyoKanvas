@@ -31,6 +31,15 @@ const router = createBrowserRouter([
         path: '/',
         element: <h1>Welcome!</h1>,
       },
+      {
+        path: '/spots',
+        children: [
+          {
+            path: ':id',
+            element: <h1>Spot Details Page</h1>,
+          },
+        ],
+      },
     ],
   },
 ]);
