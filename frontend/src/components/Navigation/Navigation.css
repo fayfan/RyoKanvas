@@ -2,93 +2,115 @@ ul .hidden {
   display: none;
 }
 
+.airbnb-logo {
+  height: 32px;
+}
+
+body {
+  margin: 0;
+}
+
+.dropdown-item {
+  color: #222222;
+}
+
+.dropdown-item,
+.modal-item {
+  padding: 0.75rem 1rem;
+}
+
+.dropdown-item:hover,
+.modal-item:hover {
+  color: #83aaff;
+  background-color: #f6f6f6;
+  cursor: pointer;
+}
+
+.dropdown-link {
+  text-decoration: none;
+}
+
 .home-button {
   margin-top: 0.5rem;
 }
 
 .logout-button {
-  color: white;
-  background-color: #83aaff;
-  height: max-content;
-  width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.25rem;
-  border: none;
-  border-radius: 0.5rem;
-}
-
-.profile-button {
-  color: #83aaff;
-  font-size: 3rem;
-  height: 3rem;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  background-color: transparent;
-  border: none;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.profile-dropdown {
-  background-color: #edf4ff;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-}
-
-.modal-item {
-  color: white;
-  background-color: #83aaff;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
-  margin: 0.5rem;
-  border-radius: 0.5rem;
-}
-
-.session-links {
   background-color: white;
   width: 100%;
-  text-align: center;
-  border-radius: 0.5rem;
+  font-weight: bold;
+  text-align: left;
+  border: none;
 }
 
-ul {
-  padding-inline-start: 0;
+.menu-icon {
+  color: #222222;
+  font-size: 20px;
+  margin-right: 14px;
+}
+
+.nav-container {
+  list-style: none;
+  height: 80px;
+  padding: 0 40px;
   margin: 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px #dddddd solid;
+}
+
+.open,
+.profile-button:hover {
+  box-shadow: 0px 2px 4px #dddddd;
+  cursor: pointer;
+}
+
+.profile-button {
+  padding: 8px 8px 8px 14px;
+  margin: 0;
+  background-color: white;
+  border: 1px #dddddd solid;
+  border-radius: 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.profile-dropdown {
+  position: absolute;
+  right: 40px;
+  z-index: 10;
+  background-color: white;
+  width: 15rem;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+  border-radius: 0.75rem;
+  box-shadow: 0px 0px 8px 4px rgba(211, 211, 211, 0.4);
+}
+
+.profile-icon {
+  color: #6a6a6a;
+  font-size: 32px;
+}
+
+.session-links {
+  width: 100%;
+}
+
+.sign-up-link {
+  font-weight: bold;
 }
 
 .user-email {
-  padding-bottom: 1rem;
-  margin-bottom: 0.25rem;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
+  padding: 0 1rem 0.75rem;
+  border-bottom: 1px #dddddd solid;
 }
 
-.user-email,
-.user-firstname-lastname {
+.user-greeting {
   color: #83aaff;
-  font-size: 0.75rem;
-}
-
-.user-email,
-.user-firstname-lastname,
-.user-username {
-  background-color: white;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.user-username {
-  font-size: 1rem;
   font-weight: bold;
-  padding-top: 1rem;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+  padding: 0.75rem 1rem 0;
 }

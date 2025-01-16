@@ -11,6 +11,7 @@ const LoginFormModal = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
+  const isLoginButtonDisabled = credential.length < 4 || password.length < 6;
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -26,33 +27,59 @@ const LoginFormModal = () => {
       });
   };
 
+  const logInDemoUser = e => {
+    return dispatch(
+      sessionActions.login({
+        credential: 'DemoUser',
+        password: 'password',
+      })
+    ).then(closeModal);
+  };
+
   return (
     <main className="login-form-main">
       <h1 className="login-h1">Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username or Email:&nbsp;
+      <form onSubmit={handleSubmit} className="login-form">
+        <label className="login-label">
+          Username or Email
           <input
             type="text"
             value={credential}
             onChange={e => setCredential(e.target.value)}
+            placeholder="Username or Email"
             required
+            className="login-input"
           />
         </label>
-        <label>
-          Password:&nbsp;
+        <label className="login-label">
+          Password
           <input
             type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
+            placeholder="Password"
             required
+            className="login-input"
           />
         </label>
-        {errors.credential && <p className="error">{errors.credential}</p>}
-        <button type="submit" className="login-button">
+        {errors.credential && (
+          <p className="login-error">{errors.credential}</p>
+        )}
+        <button
+          type="submit"
+          disabled={isLoginButtonDisabled}
+          className="login-button"
+        >
           Log In
         </button>
       </form>
+      <button
+        type="submit"
+        onClick={logInDemoUser}
+        className="demo-user-login-button"
+      >
+        Log In as Demo User
+      </button>
     </main>
   );
 };

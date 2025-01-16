@@ -8,6 +8,7 @@ const OpenModalMenuItem = ({
   onModalClose, // Optional: callback function that will be called once the modal is closed
 }) => {
   const { setModalContent, setOnModalClose } = useModal();
+  const className = itemText.toLowerCase().split(' ').join('-') + '-link';
 
   const onClick = () => {
     if (onModalClose) setOnModalClose(onModalClose);
@@ -16,7 +17,7 @@ const OpenModalMenuItem = ({
   };
 
   return (
-    <li onClick={onClick} className="modal-item">
+    <li onClick={onClick} className={`modal-item ${className}`}>
       {itemText}
     </li>
   );
