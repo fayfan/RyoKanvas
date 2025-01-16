@@ -27,7 +27,7 @@ const LoginFormModal = () => {
       });
   };
 
-  const logInDemoUser = e => {
+  const logInDemoUser = () => {
     return dispatch(
       sessionActions.login({
         credential: 'DemoUser',
