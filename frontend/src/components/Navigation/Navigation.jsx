@@ -10,7 +10,7 @@ import './Navigation.css';
 const Navigation = ({ isLoaded }) => {
   const sessionUser = useSelector(state => state.session.user);
 
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   return (
     <ul className="nav-container">
