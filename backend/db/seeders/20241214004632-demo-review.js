@@ -13,22 +13,22 @@ module.exports = {
     await Review.bulkCreate(
       [
         {
-          userId: 1,
+          userId: 2,
           spotId: 1,
-          review: 'Test review 1',
-          stars: '5',
+          review: `Lorem ipsum odor amet, consectetuer adipiscing elit. Nulla fermentum feugiat, ligula iaculis tempor himenaeos natoque. Sapien odio purus elementum natoque vulputate convallis metus. Platea ad venenatis, erat vivamus torquent lacus. Placerat nibh integer eu parturient at sit torquent vehicula felis. Hendrerit nisl placerat placerat maximus id magna pharetra convallis sodales. Dictum rhoncus quisque platea augue nulla penatibus natoque. Cras potenti euismod cursus malesuada; conubia magnis. Blandit mollis arcu velit rutrum ac.`,
+          stars: 5,
+        },
+        {
+          userId: 3,
+          spotId: 1,
+          review: `Lorem ipsum odor amet, consectetuer adipiscing elit. Nulla fermentum feugiat, ligula iaculis tempor himenaeos natoque. Sapien odio purus elementum natoque vulputate convallis metus. Platea ad venenatis, erat vivamus torquent lacus. Placerat nibh integer eu parturient at sit torquent vehicula felis. Hendrerit nisl placerat placerat maximus id magna pharetra convallis sodales. Dictum rhoncus quisque platea augue nulla penatibus natoque. Cras potenti euismod cursus malesuada; conubia magnis. Blandit mollis arcu velit rutrum ac.`,
+          stars: 4,
         },
         {
           userId: 2,
           spotId: 2,
-          review: 'Test review 2',
-          stars: '3',
-        },
-        {
-          userId: 3,
-          spotId: 3,
-          review: 'Test review 3',
-          stars: '1',
+          review: `Lorem ipsum odor amet, consectetuer adipiscing elit. Nulla fermentum feugiat, ligula iaculis tempor himenaeos natoque. Sapien odio purus elementum natoque vulputate convallis metus. Platea ad venenatis, erat vivamus torquent lacus. Placerat nibh integer eu parturient at sit torquent vehicula felis. Hendrerit nisl placerat placerat maximus id magna pharetra convallis sodales. Dictum rhoncus quisque platea augue nulla penatibus natoque. Cras potenti euismod cursus malesuada; conubia magnis. Blandit mollis arcu velit rutrum ac.`,
+          stars: 3,
         },
       ],
       { validate: true }

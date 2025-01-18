@@ -14,15 +14,15 @@ module.exports = {
       [
         {
           reviewId: 1,
-          url: 'https://TestUrl1.com',
+          url: 'https://picsum.photos/500?v=1',
         },
         {
           reviewId: 2,
-          url: 'https://TestUrl2.com',
+          url: 'https://picsum.photos/500?v=2',
         },
         {
           reviewId: 3,
-          url: 'https://TestUrl3.com',
+          url: 'https://picsum.photos/500?v=3',
         },
       ],
       { validate: true }
