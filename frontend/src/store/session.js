@@ -69,8 +69,6 @@ export const logout = () => async dispatch => {
 
 const initialState = { user: null };
 
-// If using selector functions, memoize by importing & using reselect?
-
 const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:

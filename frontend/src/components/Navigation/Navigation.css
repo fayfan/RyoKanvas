@@ -4,6 +4,7 @@ ul .hidden {
 
 .airbnb-logo {
   height: 32px;
+  display: block;
 }
 
 body {
@@ -28,10 +29,6 @@ body {
 
 .dropdown-link {
   text-decoration: none;
-}
-
-.home-button {
-  margin-top: 0.5rem;
 }
 
 .logout-button {

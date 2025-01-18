@@ -1,5 +1,5 @@
 // frontend/src/components/SignupFormModal/SignupFormModal.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import * as sessionActions from '../../store/session';
@@ -15,7 +15,22 @@ const SignupFormModal = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
-  const isSignupButtonDisabled = username.length < 4 || password.length < 6;
+  const isSignupButtonDisabled = Object.keys(errors).length;
+
+  useEffect(() => {
+    const errors = {};
+    if (username.length < 4)
+      errors.username = 'Username must be at least 4 characters';
+    if (password.length < 6)
+      errors.password = 'Password must be at least 6 characters';
+    if (
+      confirmPassword.length === password.length &&
+      confirmPassword !== password
+    )
+      errors.confirmPassword =
+        'Confirm Password field must be the same as Password field';
+    setErrors(errors);
+  }, [username, password, confirmPassword]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -57,7 +72,8 @@ const SignupFormModal = () => {
             type="text"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            required
+            placeholder="Email"
+            // required
             className="signup-input"
           />
         </label>
@@ -68,7 +84,8 @@ const SignupFormModal = () => {
             type="text"
             value={username}
             onChange={e => setUsername(e.target.value)}
-            required
+            placeholder="Username"
+            // required
             className="signup-input"
           />
         </label>
@@ -79,7 +96,8 @@ const SignupFormModal = () => {
             type="text"
             value={firstName}
             onChange={e => setFirstName(e.target.value)}
-            required
+            placeholder="First Name"
+            // required
             className="signup-input"
           />
         </label>
@@ -90,7 +108,8 @@ const SignupFormModal = () => {
             type="text"
             value={lastName}
             onChange={e => setLastName(e.target.value)}
-            required
+            placeholder="Last Name"
+            // required
             className="signup-input"
           />
         </label>
@@ -101,7 +120,8 @@ const SignupFormModal = () => {
             type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
-            required
+            placeholder="Password"
+            // required
             className="signup-input"
           />
         </label>
@@ -112,7 +132,8 @@ const SignupFormModal = () => {
             type="password"
             value={confirmPassword}
             onChange={e => setConfirmPassword(e.target.value)}
-            required
+            placeholder="Confirm Password"
+            // required
             className="signup-input"
           />
         </label>
