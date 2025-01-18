@@ -14,17 +14,37 @@ module.exports = {
       [
         {
           spotId: 1,
-          url: 'https://TestUrl1.com',
+          url: 'https://picsum.photos/500?v=10',
           preview: true,
         },
         {
+          spotId: 1,
+          url: 'https://picsum.photos/500?v=11',
+          preview: false,
+        },
+        {
+          spotId: 1,
+          url: 'https://picsum.photos/500?v=12',
+          preview: false,
+        },
+        {
+          spotId: 1,
+          url: 'https://picsum.photos/500?v=13',
+          preview: false,
+        },
+        {
+          spotId: 1,
+          url: 'https://picsum.photos/500?v=14',
+          preview: false,
+        },
+        {
           spotId: 2,
-          url: 'https://TestUrl2.com',
+          url: 'https://picsum.photos/500?v=20',
           preview: false,
         },
         {
           spotId: 3,
-          url: 'https://TestUrl3.com',
+          url: 'https://picsum.photos/500?v=30',
           preview: true,
         },
       ],

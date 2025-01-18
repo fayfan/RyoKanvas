@@ -47,8 +47,7 @@ router.get('/', validateQuery, async (req, res) => {
       },
       {
         model: SpotImage,
-        preview: true,
-        attributes: ['url'],
+        attributes: ['preview', 'url'],
       },
     ],
   });
@@ -69,7 +68,10 @@ router.get('/', validateQuery, async (req, res) => {
     spot.avgRating = avgRating;
     delete spot.Reviews;
 
-    spot.previewImage = spot.SpotImages[0] ? spot.SpotImages[0].url : null;
+    const foundImage = spot.SpotImages.find(
+      spotImage => spotImage.preview === true
+    );
+    spot.previewImage = foundImage ? foundImage.url : null;
     delete spot.SpotImages;
   });
 

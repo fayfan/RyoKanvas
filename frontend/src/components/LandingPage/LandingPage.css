@@ -1,0 +1,50 @@
+.spot-card-fa-star {
+  font-size: 0.75rem;
+  vertical-align: -0.05rem;
+}
+
+[hidden] {
+  display: none;
+}
+
+.spot-card-div {
+  margin-top: 1rem;
+}
+
+.spot-card-div:hover {
+  cursor: pointer;
+}
+
+.spot-card-line-1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.spot-card-link {
+  color: #222222;
+  text-decoration: none;
+}
+
+.spot-card-location {
+  font-weight: bold;
+}
+
+.spot-card-preview-image {
+  display: block;
+  width: 100%;
+  max-width: 275px;
+  max-height: 250px;
+  margin-bottom: 0.5rem;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+
+.spots-main {
+  margin: 0 90px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* display: grid; */
+  /* grid-template-columns: repeat(3, 1fr); */
+  gap: 1rem;
+}

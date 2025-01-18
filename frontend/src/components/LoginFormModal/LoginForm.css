@@ -64,6 +64,7 @@
 
 .login-input {
   box-sizing: border-box;
+  background-color: transparent;
   width: 100%;
   font-size: 1rem;
   margin-top: 0.1rem;
@@ -71,17 +72,27 @@
   outline: none;
 }
 
-.login-label:focus-within {
-  outline: 1px solid;
-}
-
 .login-label {
   text-align: left;
   color: #6a6a6a;
   font-size: 0.9rem;
   display: block;
-  margin-top: 1rem;
+  margin-top: -1px;
   padding: 0.5rem;
   border: 1px #222222 solid;
-  border-radius: 0.5rem;
+}
+
+.login-label:first-of-type {
+  margin-top: 1rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.login-label:focus-within {
+  outline: 1px solid;
+}
+
+.login-label:last-of-type {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
