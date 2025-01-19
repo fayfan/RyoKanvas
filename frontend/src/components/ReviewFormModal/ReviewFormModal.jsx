@@ -18,7 +18,7 @@ const ReviewFormModal = ({ spotId }) => {
     e.preventDefault();
     setErrors({});
     return dispatch(
-      spotsActions.submitReview(spotId, {
+      spotsActions.postReview(spotId, {
         review: reviewText,
         stars: reviewStars,
       })

@@ -1,6 +1,5 @@
 // frontend/src/components/OpenModalButton/OpenModalButton.jsx
 import { useModal } from '../../context/Modal';
-import './OpenModalButton.css';
 
 const OpenModalButton = ({
   modalComponent, // Component to render inside the modal

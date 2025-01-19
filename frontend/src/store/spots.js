@@ -1,14 +1,14 @@
 // frontend/src/store/spots.js
 import { csrfFetch } from './csrf';
 
-const UPDATE_SPOT = 'spots/updateSpot';
+const RESET_STORE = 'spots/resetStore';
 const UPDATE_SPOTS = 'spots/updateSpots';
+const UPDATE_SPOT = 'spots/updateSpot';
 const UPDATE_REVIEWS = 'spots/updateReviews';
 
-const updateSpot = spot => {
+const resetStore = () => {
   return {
-    type: UPDATE_SPOT,
-    payload: spot,
+    type: RESET_STORE,
   };
 };
 
@@ -19,6 +19,13 @@ const updateSpots = allSpots => {
   };
 };
 
+const updateSpot = spot => {
+  return {
+    type: UPDATE_SPOT,
+    payload: spot,
+  };
+};
+
 const updateReviews = reviews => {
   return {
     type: UPDATE_REVIEWS,
@@ -26,7 +33,11 @@ const updateReviews = reviews => {
   };
 };
 
-export const retrieveSpots = () => async dispatch => {
+export const clearStore = () => async dispatch => {
+  dispatch(resetStore());
+};
+
+export const getSpots = () => async dispatch => {
   const response = await fetch('/api/spots', {
     method: 'GET',
   });
@@ -36,7 +47,7 @@ export const retrieveSpots = () => async dispatch => {
   return response;
 };
 
-export const retrieveSpot = spotId => async dispatch => {
+export const getSpot = spotId => async dispatch => {
   const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: 'GET',
   });
@@ -46,7 +57,7 @@ export const retrieveSpot = spotId => async dispatch => {
   return response;
 };
 
-export const retrieveReviews = spotId => async dispatch => {
+export const getReviews = spotId => async dispatch => {
   const response = await fetch(`/api/spots/${spotId}/reviews`, {
     method: 'GET',
   });
@@ -56,16 +67,58 @@ export const retrieveReviews = spotId => async dispatch => {
   return response;
 };
 
-export const removeSpot = spotId => async dispatch => {
-  const response = await csrfFetch(`/api/spots/${spotId}`, {
-    method: 'DELETE',
-  });
+export const postSpot =
+  ({ address, city, state, country, lat, lng, name, description, price }) =>
+  async dispatch => {
+    const response = await csrfFetch('/api/spots', {
+      method: 'POST',
+      body: JSON.stringify({
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price,
+      }),
+    });
 
-  dispatch(retrieveSpots());
-  return response;
-};
+    dispatch(getSpots());
+    return response;
+  };
 
-export const submitReview =
+export const postSpotImages =
+  ({ spotId, previewImage, image1, image2, image3, image4 }) =>
+  async dispatch => {
+    const response = await csrfFetch(`/api/spots/${spotId}/images`, {
+      method: 'POST',
+      body: JSON.stringify({
+        url: previewImage,
+        preview: true,
+      }),
+    });
+
+    const imagesArray = [image1, image2, image3, image4];
+
+    imagesArray.forEach(async image =>
+      image.length
+        ? await csrfFetch(`/api/spots/${spotId}/images`, {
+            method: 'POST',
+            body: JSON.stringify({
+              url: image,
+              preview: false,
+            }),
+          })
+        : {}
+    );
+
+    dispatch(getSpot(spotId));
+    return response;
+  };
+
+export const postReview =
   (spotId, { review, stars }) =>
   async dispatch => {
     const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
@@ -76,25 +129,37 @@ export const submitReview =
       }),
     });
 
-    dispatch(retrieveReviews(spotId));
-    dispatch(retrieveSpot(spotId));
+    dispatch(getReviews(spotId));
+    dispatch(getSpot(spotId));
     return response;
   };
 
-export const removeReview = (reviewId, spotId) => async dispatch => {
+export const deleteSpot = spotId => async dispatch => {
+  const response = await csrfFetch(`/api/spots/${spotId}`, {
+    method: 'DELETE',
+  });
+
+  dispatch(getSpots());
+  return response;
+};
+
+export const deleteReview = (reviewId, spotId) => async dispatch => {
   const response = await csrfFetch(`/api/reviews/${reviewId}`, {
     method: 'DELETE',
   });
 
-  dispatch(retrieveReviews(spotId));
-  dispatch(retrieveSpot(spotId));
+  dispatch(getReviews(spotId));
+  dispatch(getSpot(spotId));
   return response;
 };
 
-const initialState = [];
+const initialState = {};
 
 const spotsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case RESET_STORE: {
+      return initialState;
+    }
     case UPDATE_SPOT: {
       return { ...state, spot: action.payload };
     }

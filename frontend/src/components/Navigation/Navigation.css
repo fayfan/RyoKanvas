@@ -11,6 +11,21 @@ body {
   margin: 0;
 }
 
+.create-spot-link {
+  font-weight: bold;
+  padding: 0.5rem 0.75rem;
+  border-radius: 1rem;
+}
+
+.create-spot-link:hover {
+  background-color: #f6f6f6;
+}
+
+.create-spot-link,
+.dropdown-link {
+  text-decoration: none;
+}
+
 .dropdown-item {
   color: #222222;
 }
@@ -25,10 +40,6 @@ body {
   color: #83aaff;
   background-color: #f6f6f6;
   cursor: pointer;
-}
-
-.dropdown-link {
-  text-decoration: none;
 }
 
 .logout-button {
@@ -54,6 +65,12 @@ body {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px #dddddd solid;
+}
+
+.nav-right-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .open,

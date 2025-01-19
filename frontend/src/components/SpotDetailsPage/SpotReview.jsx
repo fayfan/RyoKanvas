@@ -1,6 +1,6 @@
 // frontend/src/components/SpotDetailsPage/SpotReview.jsx
 import OpenModalButton from '../OpenModalButton';
-import DeleteReviewModal from './DeleteReviewModal';
+import ConfirmDeleteModal from '../ConfirmDeleteModal';
 
 const SpotReview = (review, userId, spotId) => {
   const monthsArray = [
@@ -30,7 +30,11 @@ const SpotReview = (review, userId, spotId) => {
         <div className="confirm-delete-button">
           <OpenModalButton
             modalComponent={
-              <DeleteReviewModal reviewId={review.id} spotId={spotId} />
+              <ConfirmDeleteModal
+                type="review"
+                reviewId={review.id}
+                spotId={spotId}
+              />
             }
             buttonText="Delete"
           />
