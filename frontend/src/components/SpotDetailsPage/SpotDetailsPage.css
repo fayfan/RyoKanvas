@@ -22,53 +22,6 @@ button:hover {
   border-radius: 0.25rem;
 }
 
-.delete-review-modal-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.delete-review-modal-h1 {
-  width: 100%;
-  margin: 0;
-}
-
-.delete-review-modal-main {
-  width: 30rem;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.delete-review-modal-no-button {
-  color: black;
-  background-color: #dddddd;
-  margin-top: 1rem;
-}
-
-.delete-review-modal-no-button,
-.delete-review-modal-yes-button {
-  font-size: 1rem;
-  font-weight: bold;
-  height: max-content;
-  width: 100%;
-  padding: 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  align-self: center;
-}
-
-.delete-review-modal-text {
-  margin: 1rem 0;
-}
-
-.delete-review-modal-yes-button {
-  color: white;
-  background-color: #dd0000;
-}
-
 .fa-star {
   font-size: 0.75rem;
   vertical-align: -0.1rem;
@@ -113,6 +66,7 @@ button:hover {
 
 .spot-details-image,
 .spot-details-preview-image {
+  height: 100%;
   width: 100%;
 }
 
@@ -156,7 +110,6 @@ button:hover {
 }
 
 .spot-details-main {
-  margin: 0 90px;
   max-width: 1000px;
   box-sizing: border-box;
 }
@@ -173,6 +126,8 @@ button:hover {
   display: block;
   border-top-left-radius: 0.75rem;
   border-bottom-left-radius: 0.75rem;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .spot-details-reserve-button {

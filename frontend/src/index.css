@@ -1,1 +1,16 @@
-/* TODO: Add sitewide styles */
+a {
+  color: #222222;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+html {
+  font-size: 1rem;
+  color: #222222;
+}
+
+main {
+  margin: 0 90px;
+}

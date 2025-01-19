@@ -10,7 +10,7 @@ const LandingPage = () => {
   const spots = useSelector(state => state.spots.allSpots);
 
   useEffect(() => {
-    dispatch(spotsActions.retrieveSpots());
+    dispatch(spotsActions.getSpots());
   }, [dispatch]);
 
   if (!spots)
