@@ -22,11 +22,20 @@ const Navigation = ({ isLoaded }) => {
           />
         </NavLink>
       </li>
-      {isLoaded && (
-        <li>
-          <ProfileButton user={sessionUser} />
-        </li>
-      )}
+      <div className="nav-right-buttons">
+        {sessionUser && (
+          <li>
+            <NavLink to="/spots/new" className="create-spot-link">
+              Create a New Spot
+            </NavLink>
+          </li>
+        )}
+        {isLoaded && (
+          <li>
+            <ProfileButton user={sessionUser} />
+          </li>
+        )}
+      </div>
     </ul>
   );
 };

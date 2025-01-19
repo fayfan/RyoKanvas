@@ -19,9 +19,10 @@ const SpotDetailsPage = () => {
   const reviews = useSelector(state => state.spots.reviews);
 
   useEffect(() => {
-    dispatch(spotsActions.retrieveSpots());
-    dispatch(spotsActions.retrieveSpot(spotId));
-    dispatch(spotsActions.retrieveReviews(spotId));
+    dispatch(spotsActions.clearStore());
+    dispatch(spotsActions.getSpots());
+    dispatch(spotsActions.getSpot(spotId));
+    dispatch(spotsActions.getReviews(spotId));
   }, [dispatch, spotId]);
 
   if (!allSpots || !currentSpot || !reviews)

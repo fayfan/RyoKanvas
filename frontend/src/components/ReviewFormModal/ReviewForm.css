@@ -42,6 +42,7 @@
 
 .review-form-main {
   width: 30rem;
+  margin: 0;
   padding: 2rem;
   display: flex;
   flex-direction: column;
