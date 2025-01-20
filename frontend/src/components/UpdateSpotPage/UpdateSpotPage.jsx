@@ -21,7 +21,7 @@ const UpdateSpotPage = () => {
   const [name, setName] = useState(spot.name);
   const [price, setPrice] = useState(spot.price);
   const [errors, setErrors] = useState({});
-  const isCreateSpotButtonDisabled = Object.keys(errors).length;
+  const isUpdateSpotButtonDisabled = Object.keys(errors).length;
 
   useEffect(() => {
     dispatch(spotsActions.getSpot(spotId));
@@ -251,7 +251,7 @@ const UpdateSpotPage = () => {
           <button
             type="submit"
             onSubmit={handleSubmit}
-            disabled={isCreateSpotButtonDisabled}
+            disabled={isUpdateSpotButtonDisabled}
             className="update-spot-submit-button"
           >
             Update Your Spot
