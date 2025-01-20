@@ -1,34 +1,35 @@
-.spot-card-fa-star {
-  font-size: 0.75rem;
-  vertical-align: -0.05rem;
-}
-
 [hidden] {
   display: none;
 }
 
-.spot-card-div {
+.landing-page-spot-card-div {
   margin-top: 1rem;
+  border-radius: 0.75rem;
 }
 
-.spot-card-div:hover {
+.landing-page-spot-card-div:hover {
   cursor: pointer;
 }
 
-.spot-card-line-1 {
+.landing-page-spot-card-fa-star {
+  font-size: 0.75rem;
+  vertical-align: -0.05rem;
+}
+
+.landing-page-spot-card-line-1 {
   display: flex;
   justify-content: space-between;
 }
 
-.spot-card-link {
+.landing-page-spot-card-link {
   text-decoration: none;
 }
 
-.spot-card-location {
+.landing-page-spot-card-location {
   font-weight: bold;
 }
 
-.spot-card-preview-image {
+.landing-page-spot-card-preview-image {
   display: block;
   width: 250px;
   height: 250px;
@@ -38,11 +39,9 @@
   overflow: hidden;
 }
 
-.spots-main {
+.landing-page-spots-main {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  /* display: grid; */
-  /* grid-template-columns: repeat(3, 1fr); */
+  max-width: 65.5rem;
   gap: 1rem;
 }

@@ -1,7 +1,7 @@
 // frontend/src/components/LandingPage/LandingPage.jsx
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import SpotCard from './SpotCard';
+import LandingPageSpotCard from './LandingPageSpotCard';
 import * as spotsActions from '../../store/spots';
 import './LandingPage.css';
 
@@ -22,7 +22,9 @@ const LandingPage = () => {
 
   return (
     <>
-      <main className="spots-main">{spots.map(spot => SpotCard(spot))}</main>
+      <main className="landing-page-spots-main">
+        {spots.map(spot => LandingPageSpotCard(spot))}
+      </main>
     </>
   );
 };

@@ -1,17 +1,17 @@
 // frontend/src/components/SpotDetailsPage/SpotDetailsPage.jsx
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa6';
 import SpotReview from './SpotReview';
 import OpenModalButton from '../OpenModalButton';
 import ReviewFormModal from '../ReviewFormModal';
 import * as spotsActions from '../../store/spots';
-import placeholderImage from '../../images/placeholder.png';
 import './SpotDetailsPage.css';
 
 const SpotDetailsPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { spotId } = useParams();
   const user = useSelector(state => state.session.user);
   const allSpots = useSelector(state => state.spots.allSpots);
@@ -25,14 +25,30 @@ const SpotDetailsPage = () => {
     dispatch(spotsActions.getReviews(spotId));
   }, [dispatch, spotId]);
 
-  if (!allSpots || !currentSpot || !reviews)
+  if (allSpots && !allSpots.find(spot => spot.id === parseInt(spotId))) {
+    return (
+      <main className="spot-details-main">
+        <h1 className="spot-details-header">Spot Not Found</h1>
+        <button onClick={() => navigate('/')} className="return-home-button">
+          Return to Home Page
+        </button>
+      </main>
+    );
+  }
+
+  if (!allSpots || !currentSpot || !reviews) {
     return (
       <main className="spot-details-main">
         <h1 className="spot-details-header">Loading page...</h1>
       </main>
     );
+  }
 
-  const spot = { ...currentSpot, ...allSpots[spotId - 1], reviews: reviews };
+  const spot = {
+    ...currentSpot,
+    ...allSpots.find(spot => spot.id === parseInt(spotId)),
+    reviews: reviews,
+  };
   const spotAvgRating = spot.avgStarRating
     ? spot.avgStarRating.toFixed(2)
     : 'New';
@@ -59,27 +75,32 @@ const SpotDetailsPage = () => {
           {spot.city}, {spot.state}, {spot.country}
         </h2>
         <div className="spot-details-images">
-          <img
-            src={previewImage ? previewImage : placeholderImage}
-            className="spot-details-preview-image"
-          />
+          <img src={previewImage} className="spot-details-preview-image" />
           <span className="other-spot-details-images">
-            <img
-              src={otherImages[0] ? otherImages[0] : placeholderImage}
-              className="spot-details-image top-left"
-            />
-            <img
-              src={otherImages[1] ? otherImages[1] : placeholderImage}
-              className="spot-details-image top-right"
-            />
-            <img
-              src={otherImages[2] ? otherImages[2] : placeholderImage}
-              className="spot-details-image bottom-left"
-            />
-            <img
-              src={otherImages[3] ? otherImages[3] : placeholderImage}
-              className="spot-details-image bottom-right"
-            />
+            {otherImages[0] && (
+              <img
+                src={otherImages[0]}
+                className="spot-details-image top-left"
+              />
+            )}
+            {otherImages[1] && (
+              <img
+                src={otherImages[1]}
+                className="spot-details-image top-right"
+              />
+            )}
+            {otherImages[2] && (
+              <img
+                src={otherImages[2]}
+                className="spot-details-image bottom-left"
+              />
+            )}
+            {otherImages[3] && (
+              <img
+                src={otherImages[3]}
+                className="spot-details-image bottom-right"
+              />
+            )}
           </span>
         </div>
         <div className="spot-details-info-box">

@@ -40,12 +40,37 @@ module.exports = {
         {
           spotId: 2,
           url: 'https://picsum.photos/500?v=20',
+          preview: true,
+        },
+        {
+          spotId: 2,
+          url: 'https://picsum.photos/500?v=21',
+          preview: false,
+        },
+        {
+          spotId: 2,
+          url: 'https://picsum.photos/500?v=22',
           preview: false,
         },
         {
           spotId: 3,
           url: 'https://picsum.photos/500?v=30',
           preview: true,
+        },
+        {
+          spotId: 3,
+          url: 'https://picsum.photos/500?v=31',
+          preview: false,
+        },
+        {
+          spotId: 3,
+          url: 'https://picsum.photos/500?v=32',
+          preview: false,
+        },
+        {
+          spotId: 3,
+          url: 'https://picsum.photos/500?v=33',
+          preview: false,
         },
       ],
       { validate: true }
