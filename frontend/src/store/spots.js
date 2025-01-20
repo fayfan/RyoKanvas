@@ -134,6 +134,39 @@ export const postReview =
     return response;
   };
 
+export const putSpot =
+  ({
+    spotId,
+    address,
+    city,
+    state,
+    country,
+    lat,
+    lng,
+    name,
+    description,
+    price,
+  }) =>
+  async dispatch => {
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price,
+      }),
+    });
+
+    dispatch(getSpots());
+    return response;
+  };
+
 export const deleteSpot = spotId => async dispatch => {
   const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: 'DELETE',

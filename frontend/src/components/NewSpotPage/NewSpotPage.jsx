@@ -1,6 +1,6 @@
 // frontend/src/components/NewSpotPage/NewSpotPage.jsx
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as spotsActions from '../../store/spots';
 import './NewSpotPage.css';
@@ -80,9 +80,6 @@ const NewSpotPage = () => {
     previewImage,
   ]);
 
-  const allSpots = useSelector(state => state.spots.allSpots);
-  const spotId = allSpots.length + 1;
-
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -96,6 +93,7 @@ const NewSpotPage = () => {
       image4Validator
     ) {
       setErrors({});
+      let spotId;
 
       dispatch(
         spotsActions.postSpot({
@@ -117,8 +115,9 @@ const NewSpotPage = () => {
             setErrors(data.errors);
           }
         })
-        .then(() => {
-          const spotId = allSpots.length + 1;
+        .then(async res => {
+          const data = await res.json();
+          spotId = data.id;
 
           dispatch(
             spotsActions.postSpotImages({
@@ -136,9 +135,9 @@ const NewSpotPage = () => {
               setErrors(data.errors);
             }
           });
-        });
 
-      navigate(`/spots/${spotId}`);
+          navigate(`/spots/${spotId}`);
+        });
     } else {
       const validationErrors = {};
 
@@ -238,7 +237,7 @@ const NewSpotPage = () => {
                   <p className="new-spot-error-inline">{errors.lat}</p>
                 )}
                 <input
-                  type="text"
+                  type="number"
                   value={lat}
                   onChange={e => setLat(e.target.value)}
                   placeholder="Latitude"
@@ -252,7 +251,7 @@ const NewSpotPage = () => {
                   <p className="new-spot-error-inline">{errors.lng}</p>
                 )}
                 <input
-                  type="text"
+                  type="number"
                   value={lng}
                   onChange={e => setLng(e.target.value)}
                   placeholder="Longitude"

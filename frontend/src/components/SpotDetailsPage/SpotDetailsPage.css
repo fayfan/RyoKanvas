@@ -13,7 +13,8 @@ button:hover {
 
 .confirm-delete-button .modal-button,
 .post-review-button .modal-button,
-.post-review-button-no-reviews .modal-button {
+.post-review-button-no-reviews .modal-button,
+.return-home-button {
   display: block;
   color: white;
   background-color: #83aaff;
@@ -37,7 +38,7 @@ button:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .post-review-button {
@@ -81,7 +82,7 @@ button:hover {
 .spot-details-images {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .spot-details-images,
@@ -118,7 +119,8 @@ button:hover {
   padding: 0.25rem 0.75rem;
 }
 
-.post-review-button-no-reviews .modal-button {
+.post-review-button-no-reviews .modal-button,
+.return-home-button {
   padding: 0.5rem 0.75rem;
 }
 
