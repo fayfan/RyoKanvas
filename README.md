@@ -7,7 +7,30 @@
 [airbnb-database-schema]: https://appacademy-open-assets.s3.us-west-1.amazonaws.com/Modular-Curriculum/content/week-12/airbnb-db-schema.png
 [airbnb-db-diagram-info]: https://appacademy-open-assets.s3.us-west-1.amazonaws.com/Modular-Curriculum/content/week-12/airbnb-db-diagram-info.txt
 
-## API Documentation
+## Frontend Routes Documentation
+
+## Public Routes
+
+| Route Path          | Component/Page      | Description                                       | Parameters | Authentication | Example               |
+|---------------------|---------------------|---------------------------------------------------|------------|----------------|-----------------------|
+| /                   | LandingPage         | The main landing page of the application.         | None       | Not Required   | /                     |
+
+## Spots Routes (Nested)
+
+| Route Path          | Component           | Description                                       | Parameters | Authentication | Example               |
+|---------------------|---------------------|---------------------------------------------------|------------|----------------|-----------------------|
+| /spots/:spotId      | SpotDetailsPage     | Displays details for a specific spot.             | spotId     | Not Required   | /spots/123            |
+| /spots/:spotId/edit | UpdateSpotPage      | Allows editing of a specific spot.                | spotId     | Required       | /spots/123/edit       |
+| /spots/new          | NewSpotPage         | Form for creating a new spot.                     | None       | Required       | /spots/new            |
+| /spots/current      | ManageSpotsPage     | Manages the current user's spots (e.g., listing). | None       | Required       | /spots/current        |
+
+**Notes:**
+
+* `:spotId` is a dynamic parameter representing the ID of a specific spot.
+* The `/spots` routes are nested, meaning they are all related to managing or viewing spots.
+* The "Required" authentication status indicates that the user needs to be logged in to access these routes.
+
+## Backend API Documentation
 
 ## USER AUTHENTICATION/AUTHORIZATION
 
