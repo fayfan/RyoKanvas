@@ -2,7 +2,7 @@
 
 RyoKanvas is a booking app that allows users to reserve spots. Users can leave a review on any spot they have previously visited. Users can also create their own spots for other users to reserve.
 
-### [🔭 Click here to visit the RyoKanvas website!](https://ryokanvas.onrender.com/)
+**[🔭 Click here to visit the RyoKanvas website!](https://ryokanvas.onrender.com/)**
 
 ##
 
