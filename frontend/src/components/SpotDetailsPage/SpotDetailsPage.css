@@ -51,6 +51,11 @@ button:hover {
   margin-bottom: 5rem;
 }
 
+.spot-details-container {
+  display: flex;
+  justify-content: center;
+}
+
 .spot-details-description {
   white-space: pre-line;
 }
@@ -68,7 +73,7 @@ button:hover {
 .spot-details-image,
 .spot-details-preview-image {
   height: 100%;
-  width: 100%;
+  max-width: 100%;
 }
 
 .spot-details-image.bottom-right {
@@ -175,11 +180,4 @@ button:hover {
 
 .spot-details-reviews-header {
   margin: 1rem 0;
-}
-
-@media (min-width: 1181px) {
-  .spot-details-container {
-    display: flex;
-    justify-content: center;
-  }
 }

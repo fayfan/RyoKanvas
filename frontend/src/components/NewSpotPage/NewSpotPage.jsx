@@ -65,6 +65,17 @@ const NewSpotPage = () => {
     if (!price.length) effectErrors.price = 'Price is required';
     if (!previewImage.length)
       effectErrors.previewImage = 'Preview image is required';
+    if (!previewImageValidator)
+      effectErrors.previewImage =
+        'Preview image URL must end in .png, .jpg, or .jpeg';
+    if (!image1Validator)
+      effectErrors.image1 = 'Image URL must end in .png, .jpg, or .jpeg';
+    if (!image2Validator)
+      effectErrors.image2 = 'Image URL must end in .png, .jpg, or .jpeg';
+    if (!image3Validator)
+      effectErrors.image3 = 'Image URL must end in .png, .jpg, or .jpeg';
+    if (!image4Validator)
+      effectErrors.image4 = 'Image URL must end in .png, .jpg, or .jpeg';
 
     setErrors(effectErrors);
   }, [
@@ -78,20 +89,17 @@ const NewSpotPage = () => {
     name,
     price,
     previewImage,
+    previewImageValidator,
+    image1Validator,
+    image2Validator,
+    image3Validator,
+    image4Validator,
   ]);
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (
-      description.length > 29 &&
-      previewImage.length &&
-      previewImageValidator &&
-      image1Validator &&
-      image2Validator &&
-      image3Validator &&
-      image4Validator
-    ) {
+    if (description.length > 29) {
       setErrors({});
       let spotId;
 
@@ -144,19 +152,6 @@ const NewSpotPage = () => {
       if (description.length < 30)
         validationErrors.description =
           'Description must be at least 30 characters';
-      if (!previewImage.length)
-        validationErrors.previewImage = 'Preview image is required';
-      if (!previewImageValidator)
-        validationErrors.previewImage =
-          'Preview image URL must end in .png, .jpg, or .jpeg';
-      if (!image1Validator)
-        validationErrors.image1 = 'Image URL must end in .png, .jpg, or .jpeg';
-      if (!image2Validator)
-        validationErrors.image2 = 'Image URL must end in .png, .jpg, or .jpeg';
-      if (!image3Validator)
-        validationErrors.image3 = 'Image URL must end in .png, .jpg, or .jpeg';
-      if (!image4Validator)
-        validationErrors.image4 = 'Image URL must end in .png, .jpg, or .jpeg';
 
       return setErrors(validationErrors);
     }
