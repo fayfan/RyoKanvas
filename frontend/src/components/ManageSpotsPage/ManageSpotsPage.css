@@ -48,6 +48,16 @@
   margin: 1rem 0 0.5rem 0;
 }
 
+.manage-spots-page-main {
+  display: flex;
+  justify-content: center;
+}
+
+.manage-spots-page-main-div {
+  max-width: 65.5rem;
+  flex-grow: 1;
+}
+
 .manage-spots-page-spot-card-div {
   margin-top: 1rem;
   border-radius: 0.75rem;
