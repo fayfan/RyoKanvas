@@ -41,7 +41,13 @@
 
 .landing-page-spots-main {
   display: flex;
+  justify-content: center;
+}
+
+.landing-page-spots-main-div {
+  display: flex;
   flex-wrap: wrap;
   max-width: 65.5rem;
+  flex-grow: 1;
   gap: 1rem;
 }

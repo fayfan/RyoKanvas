@@ -23,7 +23,9 @@ const LandingPage = () => {
   return (
     <>
       <main className="landing-page-spots-main">
-        {spots.map(spot => LandingPageSpotCard(spot))}
+        <div className="landing-page-spots-main-div">
+          {spots.map(spot => LandingPageSpotCard(spot))}
+        </div>
       </main>
     </>
   );

@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
-import airbnbLogoLarge from '../../images/airbnb-logo-large.png';
-import airbnbLogoSmall from '../../images/airbnb-logo-small.png';
+import ryokanvasLogoLarge from '../../images/ryokanvas-logo-large.png';
+import ryokanvasLogoSmall from '../../images/ryokanvas-logo-small.png';
 import './Navigation.css';
 
 const Navigation = ({ isLoaded }) => {
@@ -17,7 +17,7 @@ const Navigation = ({ isLoaded }) => {
       <li className="home-button">
         <NavLink to="/">
           <img
-            src={width < 1128 ? airbnbLogoSmall : airbnbLogoLarge}
+            src={width < 1128 ? ryokanvasLogoSmall : ryokanvasLogoLarge}
             className="airbnb-logo"
           />
         </NavLink>

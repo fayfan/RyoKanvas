@@ -35,30 +35,34 @@ const ManageSpotsPage = () => {
   return (
     <>
       <main className="manage-spots-page-main">
-        <h1 className="manage-spots-page-h1">Manage Spots</h1>
-        {!!spots.length && (
-          <button
-            onClick={() => navigate('/spots/new')}
-            className="create-spot-button"
-          >
-            Create a New Spot
-          </button>
-        )}
-        {!spots.length && (
-          <div className="manage-spots-page-tagline">
-            <p className="manage-spots-page-tagline-text">
-              Create your first spot!
-            </p>
+        <div className="manage-spots-page-main-div">
+          <h1 className="manage-spots-page-h1">Manage Spots</h1>
+          {!!spots.length && (
             <button
               onClick={() => navigate('/spots/new')}
-              className="create-spot-button-no-spots"
+              className="create-spot-button"
             >
               Create a New Spot
             </button>
+          )}
+          {!spots.length && (
+            <div className="manage-spots-page-tagline">
+              <p className="manage-spots-page-tagline-text">
+                Create your first spot!
+              </p>
+              <button
+                onClick={() => navigate('/spots/new')}
+                className="create-spot-button-no-spots"
+              >
+                Create a New Spot
+              </button>
+            </div>
+          )}
+          <div className="manage-spots-page-spots-div">
+            <div className="manage-spots-page-spots">
+              {spots.map(spot => ManageSpotsPageSpotCard(spot, navigate))}
+            </div>
           </div>
-        )}
-        <div className="manage-spots-page-spots">
-          {spots.map(spot => ManageSpotsPageSpotCard(spot, navigate))}
         </div>
       </main>
     </>
