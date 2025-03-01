@@ -2,7 +2,16 @@
   display: none;
 }
 
+.landing-page-spot-card-average-rating {
+  min-width: fit-content;
+  margin-left: 0.5rem;
+}
+
 .landing-page-spot-card-div {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  /* height: 250px; */
   margin-top: 1rem;
   border-radius: 0.75rem;
 }
@@ -32,11 +41,12 @@
 .landing-page-spot-card-preview-image {
   display: block;
   width: 250px;
-  height: 250px;
+  height: 200px;
   margin-bottom: 0.5rem;
   border-radius: 0.75rem;
   object-fit: cover;
   overflow: hidden;
+  overflow-clip-margin: unset;
 }
 
 .landing-page-spots-main {

@@ -72,7 +72,7 @@ button:hover {
 
 .spot-details-image,
 .spot-details-preview-image {
-  height: 100%;
+  height: auto;
   max-width: 100%;
 }
 
@@ -135,6 +135,7 @@ button:hover {
   border-bottom-left-radius: 0.75rem;
   object-fit: cover;
   overflow: hidden;
+  overflow-clip-margin: unset;
 }
 
 .spot-details-reserve-button {
