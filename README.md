@@ -4,6 +4,8 @@ RyoKanvas is a booking application that allows users to reserve spots. Users can
 
 **[🔭 Click here to visit the RyoKanvas website!](https://ryokanvas.onrender.com/)**
 
+![RyoKanvas](https://github.com/user-attachments/assets/e7d6499f-4447-4e09-be77-08dd24679dfd)
+
 RyoKanvas uses the following technologies:
 
 | Frontend                                         | Backend                                          | Database                                         |
