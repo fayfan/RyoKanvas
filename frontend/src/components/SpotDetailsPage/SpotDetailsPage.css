@@ -72,7 +72,7 @@ button:hover {
 
 .spot-details-image,
 .spot-details-preview-image {
-  height: auto;
+  min-height: 100%;
   max-width: 100%;
 }
 

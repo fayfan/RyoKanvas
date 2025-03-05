@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up() {
     await SpotImage.bulkCreate(
       [
         {
@@ -179,7 +179,7 @@ module.exports = {
         },
         {
           spotId: 7,
-          url: 'https://media.vrbo.com/lodging/47000000/46280000/46272900/46272841/653446dc.jpg',
+          url: 'https://media.vrbo.com/lodging/47000000/46280000/46272900/46272841/45c829c6.jpg',
           preview: false,
         },
         {
