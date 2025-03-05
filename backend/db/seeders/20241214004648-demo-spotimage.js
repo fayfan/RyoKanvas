@@ -179,7 +179,7 @@ module.exports = {
         },
         {
           spotId: 7,
-          url: 'https://media.vrbo.com/lodging/47000000/46280000/46272900/46272841/b9dca811.jpg',
+          url: 'https://media.vrbo.com/lodging/47000000/46280000/46272900/46272841/653446dc.jpg',
           preview: false,
         },
         {
